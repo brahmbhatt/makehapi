@@ -11,15 +11,15 @@ describe('testcase for server', function() {
       })
       });
 
-    //   it('should print margi', function(done) {
-    //     const options = {
-    //         method : 'GET',
-    //         url : '/margi'
-    //     };
-    //     server.inject(options,(response) => {
-    //         expect(response.statusCode).toBe(200);
-    //         done();
-    //     })
-    //     });
+      it('should print margi', function(done) {
+        const options = {
+            method : 'GET',
+            url : '/'
+        };
+        server.inject(options,(response) => {
+            expect(response.statusCode).toBe(200);
+            done();
+        })
+        });
       
     });
