@@ -11,6 +11,16 @@ describe('testcase for server', function() {
       })
       });
 
+      it('should sends the correct statuscode', function(done) {
+        const options = {
+            method : 'GET',
+            url : '/foo/bar/baz/flie.html'
+        };
+        server.inject(options,(response) => {
+            expect(response.statusCode).toBe(200);
+            done();
+        })
+        });
    
       
     });
