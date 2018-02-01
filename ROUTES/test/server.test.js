@@ -1,13 +1,15 @@
 const server = require('../solution/server');
-describe('#save()', function() {
-    it('should save without error', function(done) {
+describe('testcase for server', function() {
+    it('should print margi', function(done) {
       const options = {
           method : 'GET',
-          url : '/'
+          url : '/margi'
       };
       server.inject(options,(response) => {
-          expect(response.statusCode).toBe(200);
+          expect(response.payload).toBe('Hello margi');
           done();
       })
       });
+
+      
     });
