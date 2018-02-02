@@ -1,22 +1,25 @@
-let Fs = require('fs');
 let Hapi = require('hapi');
-let Path = require('path');
-let Rot13 = require('rot13-transform');
+let Joi = require('joi');
+
 
 let server = new Hapi.Server();
 
 server.connection({
     host: 'localhost',
-    port: 4060
+    port: 5000
 });
 
 server.route({
     method: 'GET',
-    path: '/',
+    path: '/chickens/{breed}',
     config: {
         handler: (request, reply) => {
-            var file = Fs.createReadStream('/Users/margibrahmbhatt/makemehapi/STREAMS/solution/input.txt');
-            reply(file.pipe(Rot13()));
+            reply('You asked for the chicken ' + request.params.breed);
+        },
+        validate: {
+            params: {
+                breed: Joi.string().required()
+            }
         }
     }
 });
@@ -24,5 +27,4 @@ server.route({
 server.start((err) => {
     if (err) throw err;
 });
-
 module.exports = server;
