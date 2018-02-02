@@ -12,6 +12,16 @@ describe('Validation',()=>{
        })
      
    })
-   
+   test('Should return right response',(done)=>{
+    const options = {
+        method:'GET',
+        url : '/chickens/breed'
+    }
+    server.inject(options,(response)=>{
+        expect(response.result).toMatch('You asked for the chicken breed');
+        done();
+    })
+  
+})
 
 });
